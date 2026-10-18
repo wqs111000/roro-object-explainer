@@ -2,7 +2,7 @@
 
 把“它为什么会这样工作？”做成儿童能看懂的原理图解：无字插画母版、独立编号与说明、可打印卡片，以及可选的双视图有声讲解。
 
-来自 [Roro Story Studio](https://github.com/wqs111000/roro-story-studio) 的实际制作流程，抽离成可移植的 skill。**v0.1.0：制作规范经过作品使用；独立工具包是首次公开版本，仍需要更多跨环境反馈。**
+来自 [Roro Story Studio](https://github.com/wqs111000/roro-story-studio) 的实际制作流程，抽离成可移植的 skill。**v0.1.1：制作规范经过作品使用；独立工具包处于早期公开阶段，仍需要更多跨环境反馈。**
 
 ## 能做什么
 

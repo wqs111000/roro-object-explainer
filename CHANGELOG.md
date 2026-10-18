@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 — 2026-10-19
+
+- Use an explicit test entrypoint so `npm test` works on Windows with Node 20.
+- Preserve the first public release tag; publish this portability fix separately.
+
 ## 0.1.0 — 2026-10-19
 
 - Extract the single-object explainer workflow from Roro Story Studio.

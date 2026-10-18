@@ -1,0 +1,8 @@
+{
+  "name": "roro-object-explainer-skill",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "engines": {"node": ">=20"},
+  "dependencies": {"sharp": "^0.34.0"}
+}

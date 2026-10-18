@@ -1,0 +1,12 @@
+Roro Object Explainer
+Copyright 2026 Roro Story Studio contributors
+
+Derived from the roro-object-explainer workflow and card renderers in
+https://github.com/wqs111000/roro-story-studio
+
+This standalone edition changes reference handling, dependency discovery,
+neutral output labels and technical-check hashing; adds standalone review
+verification, WAV assembly, an offline player, documentation and tests.
+
+No private character reference images, voice recordings, family information,
+generated story media, fonts or models are distributed with this repository.

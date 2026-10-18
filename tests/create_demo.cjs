@@ -1,0 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+'use strict';
+const path=require('node:path'),{spawnSync}=require('node:child_process'),{fixture}=require('./fixtures.cjs');
+(async()=>{const dir=path.resolve('drafts','demo-'+Date.now());await fixture(dir);const scripts=path.resolve('skills/roro-object-explainer/scripts');for(const [cmd,args]of [[process.execPath,[path.join(scripts,'card_pipeline.cjs'),'render','--spec',path.join(dir,'card.json'),'--out',path.join(dir,'layout')]],[process.env.PYTHON||'python',[path.join(scripts,'lesson_pipeline.py'),'build','--script',path.join(dir,'script.json'),'--card',path.join(dir,'card.json'),'--out',path.join(dir,'audio')]]]){const r=spawnSync(cmd,args,{encoding:'utf8'});if(r.status!==0)throw Error(r.stderr||r.error);}
+console.log('Tool self-check only; synthetic shapes and tones, no AI illustration or narration.');console.log(path.join(dir,'layout','preview.png'));console.log(path.join(dir,'audio','player.html'));})().catch(e=>{console.error(e.message);process.exitCode=1;});

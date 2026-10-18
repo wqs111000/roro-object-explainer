@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>图解讲解 · 候选预览</title>
+<style>
+body{font:18px/1.6 system-ui,sans-serif;max-width:1000px;margin:24px auto;padding:0 16px;background:#fff8e9;color:#513a27}h1{font-size:1.7rem}button{font:inherit;padding:8px 14px;margin:4px;border:1px solid #ab8962;border-radius:12px;background:#fffdf7;color:inherit;cursor:pointer}button:focus-visible{outline:3px solid #3c9c98}#stage{position:relative;line-height:0;margin:16px 0}#art{width:100%;height:auto}#badges{position:absolute;inset:0}.badge{position:absolute;transform:translate(-50%,-50%);background:#3c9c98;color:white;font-size:clamp(14px,2.5vw,24px);width:1.8em;height:1.8em;border:2px solid white;border-radius:50%;text-align:center;line-height:1.8em}audio{width:100%}#caption{font-size:1.25rem;min-height:2em}small{color:#735c48}
+</style>
+<h1 id="title"></h1><small>候选预览 · 内容未批准 · 请检查图像并试听</small>
+<div id="stage"><img id="art" alt=""><div id="badges" aria-hidden="true"></div></div>
+<p id="caption" aria-live="polite"></p>
+<audio id="audio" controls preload="metadata"></audio>
+<p><button id="outside">看看外面</button><button id="inside">看看里面</button><button id="restart">从头回听</button><label><input id="all" type="checkbox">显示全部编号</label></p>
+<div id="chapters" aria-label="讲解段落"></div><ol id="parts"></ol>
+<script>
+'use strict';
+const lesson=/*LESSON_DATA*/;
+const el=id=>document.getElementById(id),audio=el('audio');
+el('title').textContent=lesson.title;audio.src=/*AUDIO_DATA*/;
+let view='exterior';
+function segmentAt(time){return lesson.segments.find(s=>time>=s.start&&time<s.end)||[...lesson.segments].reverse().find(s=>time>=s.start)||lesson.segments[0];}
+function draw(){
+  const time=audio.currentTime,segment=segmentAt(time),image=el('art');
+  if(image.getAttribute('src')!==lesson.views[view])image.src=lesson.views[view];
+  image.alt=lesson.title+(view==='exterior'?'：完整外观':'：内部示意');
+  el('caption').textContent=segment.caption;
+  el('badges').replaceChildren();
+  lesson.parts.forEach((p,i)=>{
+    const visible=el('all').checked||lesson.segments.some(s=>s.part===i+1&&s.start<=time);
+    if(view!=='interior'||!visible)return;
+    const b=document.createElement('span');b.className='badge';b.textContent=String(i+1);b.style.left=(p.badge[0]*100)+'%';b.style.top=(p.badge[1]*100)+'%';el('badges').append(b);
+  });
+}
+function sync(){view=segmentAt(audio.currentTime).view;draw();}
+async function play(){try{await audio.play();}catch{el('caption').textContent='请点击音频播放按钮。';}}
+for(const [id,name] of [['outside','exterior'],['inside','interior']])el(id).onclick=()=>{audio.pause();view=name;draw();};
+el('restart').onclick=()=>{audio.currentTime=0;sync();play();};el('all').onchange=draw;
+for(const event of ['timeupdate','seeked','play','ended'])audio.addEventListener(event,sync);
+lesson.segments.forEach(s=>{const b=document.createElement('button');b.textContent=s.caption;b.onclick=()=>{audio.currentTime=s.start;sync();play();};el('chapters').append(b);});
+lesson.parts.forEach(p=>{const li=document.createElement('li');li.textContent=p.name+'：'+p.function;el('parts').append(li);});sync();
+</script></html>

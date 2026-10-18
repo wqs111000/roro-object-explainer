@@ -1,0 +1,17 @@
+{
+  "name": "roro-object-explainer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portable illustrated mechanism explainer skill",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "demo": "node tests/create_demo.cjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

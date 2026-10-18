@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "object": "卡车",
+  "object_type": "后驱厢式卡车的简化动力传动结构",
+  "title": "卡车为什么会跑？",
+  "subtitle": "车底的零件正在传递力量。",
+  "mechanism": "发动机输出转动力，经过变速箱调节后，传动轴把转动力传给后桥差速器，再通过半轴传到后驱动轮。前轮不作为这张图的动力末端。",
+  "parts": [
+    {
+      "name": "发动机",
+      "function": "产生转动力",
+      "target_box": null,
+      "badge": null
+    },
+    {
+      "name": "变速箱",
+      "function": "调整力量和速度",
+      "target_box": null,
+      "badge": null
+    },
+    {
+      "name": "传动轴",
+      "function": "把动力传向后方",
+      "target_box": null,
+      "badge": null
+    },
+    {
+      "name": "后桥",
+      "function": "把动力分给后轮",
+      "target_box": null,
+      "badge": null
+    },
+    {
+      "name": "驱动轮",
+      "function": "转起来，卡车前进",
+      "target_box": null,
+      "badge": null
+    }
+  ],
+  "steps": [
+    "发动机产生动力",
+    "零件接力传送",
+    "驱动轮转起来"
+  ],
+  "observation": "找一找：哪根长长的轴把动力传向后方？",
+  "illustration": {
+    "path": null,
+    "sha256": null,
+    "composition": "蓝色卡车朝左的完整近侧视剖面，露出底盘传动部件，温暖简洁的工作坊。"
+  },
+  "references": [],
+  "sources": [
+    {
+      "url": "https://example.org/replace-with-verified-primary-source",
+      "supports": "示例占位；制作前替换成已阅读并支持所画车型传动关系的一手资料。"
+    }
+  ]
+}

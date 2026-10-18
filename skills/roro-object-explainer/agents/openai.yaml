@@ -1,0 +1,6 @@
+interface:
+  display_name: "图解绘本制作"
+  short_description: "为物品制作儿童原理图解，含独立标注、可打印卡片与可选的双视图有声讲解"
+  default_prompt: "使用 $roro-object-explainer 为洗衣机制作图解绘本，解释水和滚筒怎样配合工作，先做候选并完成视觉复核。"
+policy:
+  allow_implicit_invocation: true
